@@ -33,6 +33,14 @@ jobs:
         env:
           NITRO_PRESET: node-server
 
+      - name: Verify build artifacts
+        if: always()
+        run: |
+          set -e
+          test -f .output/server/index.mjs || { echo "Missing .output/server/index.mjs"; exit 1; }
+          test -d .output/public/assets || { echo "Missing .output/public/assets/ directory"; exit 1; }
+          echo "Build artifacts OK: .output/server/index.mjs and .output/public/assets/ present"
+
       - name: List build output
         if: always()
         run: |
@@ -40,6 +48,7 @@ jobs:
           for d in .output .vinxi .tanstack .nitro dist; do
             echo "=== $d ===" && ls -laR "$d" 2>/dev/null || echo "(not found)"
           done
+
 
       - name: Upload build artifact
         if: github.ref == 'refs/heads/main'
