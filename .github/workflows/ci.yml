@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+
 jobs:
   ci:
     name: Lint & Build
@@ -29,6 +32,14 @@ jobs:
         run: bun run build
         env:
           NITRO_PRESET: node-server
+
+      - name: List build output
+        if: always()
+        run: |
+          echo "=== root ===" && ls -la
+          for d in .output .vinxi .tanstack .nitro dist; do
+            echo "=== $d ===" && ls -laR "$d" 2>/dev/null || echo "(not found)"
+          done
 
       - name: Upload build artifact
         if: github.ref == 'refs/heads/main'
