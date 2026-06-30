@@ -61,5 +61,6 @@ jobs:
             "$SSH_USER@$SSH_HOST:~/www/.output/"
 
           sshpass -e ssh -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
-            'pm2 restart marie-viane 2>/dev/null \
+            'export PORT=80 HOST=0.0.0.0; \
+             pm2 restart marie-viane --update-env 2>/dev/null \
               || (pm2 start ~/www/.output/server/index.mjs --name marie-viane && pm2 save)'
