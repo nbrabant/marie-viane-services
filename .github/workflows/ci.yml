@@ -10,9 +10,10 @@ env:
   ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
 jobs:
-  ci:
-    name: Lint & Build
+  build-and-deploy:
+    name: Build & Deploy
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
       - uses: actions/checkout@v4
@@ -41,67 +42,24 @@ jobs:
           test -d .output/public/assets || { echo "Missing .output/public/assets/ directory"; exit 1; }
           echo "Build artifacts OK: .output/server/index.mjs and .output/public/assets/ present"
 
-      - name: List build output
-        if: always()
-        run: |
-          echo "=== root ===" && ls -la
-          for d in .output .vinxi .tanstack .nitro dist; do
-            echo "=== $d ===" && ls -laR "$d" 2>/dev/null || echo "(not found)"
-          done
-
-
-      - name: Upload build artifact
+      - name: Deploy to OVH
         if: github.ref == 'refs/heads/main'
-        uses: actions/upload-artifact@v4.6.2
-        with:
-          name: build
-          path: .output/
-          retention-days: 1
-
-  deploy:
-    name: Deploy to OVH
-    needs: ci
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    environment: production
-
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4.6.2
-        with:
-          name: build
-          path: .output/
-
-      - name: Install sshpass
-        run: sudo apt-get install -y sshpass
-
-      - name: Trust server host key
-        env:
-          SSH_HOST: ${{ secrets.OVH_HOST }}
-          SSH_PORT: ${{ secrets.OVH_SSH_PORT }}
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
-
-      - name: Sync build to server
         env:
           SSHPASS: ${{ secrets.OVH_PASSWORD }}
           SSH_HOST: ${{ secrets.OVH_HOST }}
           SSH_USER: ${{ secrets.OVH_USER }}
           SSH_PORT: ${{ secrets.OVH_SSH_PORT }}
         run: |
+          sudo apt-get install -y sshpass
+
+          mkdir -p ~/.ssh
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
+
           sshpass -e rsync -avz --delete \
             -e "ssh -p $SSH_PORT" \
             .output/ \
             "$SSH_USER@$SSH_HOST:~/www/.output/"
 
-      - name: Restart app with PM2
-        env:
-          SSHPASS: ${{ secrets.OVH_PASSWORD }}
-          SSH_HOST: ${{ secrets.OVH_HOST }}
-          SSH_USER: ${{ secrets.OVH_USER }}
-          SSH_PORT: ${{ secrets.OVH_SSH_PORT }}
-        run: |
           sshpass -e ssh -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
             'pm2 restart marie-viane 2>/dev/null \
               || (pm2 start ~/www/.output/server/index.mjs --name marie-viane && pm2 save)'
