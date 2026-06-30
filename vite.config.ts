@@ -12,4 +12,13 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Deployment target (OVH + PM2 + Node, see .github/workflows/ci.yml) needs the
+  // Node server preset so the build emits `.output/server/index.mjs` with the
+  // client assets bundled under `.output/public`.
+  // NOTE: inside the Lovable sandbox this option is ignored — the preview always
+  // builds with the cloudflare-module preset into `dist/`. It only takes effect
+  // in CI (non-sandbox), which is exactly where deployment happens.
+  nitro: {
+    preset: "node-server",
+  },
 });
