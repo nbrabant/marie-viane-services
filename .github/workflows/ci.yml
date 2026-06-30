@@ -38,9 +38,9 @@ jobs:
         if: always()
         run: |
           set -e
-          test -f .output/server/index.mjs || { echo "Missing .output/server/index.mjs"; exit 1; }
+          test -f .output/public/index.html || { echo "Missing .output/public/index.html"; exit 1; }
           test -d .output/public/assets || { echo "Missing .output/public/assets/ directory"; exit 1; }
-          echo "Build artifacts OK: .output/server/index.mjs and .output/public/assets/ present"
+          echo "Build artifacts OK: .output/public/index.html and .output/public/assets/ present"
 
       - name: Deploy to OVH
         if: github.ref == 'refs/heads/main'
@@ -55,12 +55,9 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
 
-          sshpass -e rsync -avz --delete \
+          # OVH shared hosting serves static files only (no Node runtime), so we
+          # deploy the prerendered output straight to the domain's document root.
+          sshpass -e rsync -avz \
             -e "ssh -p $SSH_PORT" \
-            .output/ \
-            "$SSH_USER@$SSH_HOST:~/www/.output/"
-
-          sshpass -e ssh -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
-            'export PORT=80 HOST=0.0.0.0; \
-             pm2 restart marie-viane --update-env 2>/dev/null \
-              || (pm2 start ~/www/.output/server/index.mjs --name marie-viane && pm2 save)'
+            .output/public/ \
+            "$SSH_USER@$SSH_HOST:~/www/"

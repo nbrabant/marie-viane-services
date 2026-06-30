@@ -11,10 +11,17 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // Deployment target (OVH shared hosting — static files only, no Node runtime,
+    // see .github/workflows/ci.yml) so every route is prerendered to static HTML
+    // at build time and `.output/public/` is deployed as-is.
+    prerender: {
+      enabled: true,
+      crawlLinks: true,
+      pages: ["/", "/sitemap.xml"],
+    },
   },
-  // Deployment target (OVH + PM2 + Node, see .github/workflows/ci.yml) needs the
-  // Node server preset so the build emits `.output/server/index.mjs` with the
-  // client assets bundled under `.output/public`.
+  // The node-server preset still produces a `.output/server` build, but it's
+  // unused — deploy only ships the prerendered `.output/public/` output.
   // NOTE: inside the Lovable sandbox this option is ignored — the preview always
   // builds with the cloudflare-module preset into `dist/`. It only takes effect
   // in CI (non-sandbox), which is exactly where deployment happens.
