@@ -1,0 +1,89 @@
+name: CI / CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    name: Lint & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Lint
+        run: bun run lint
+
+      - name: Type check
+        run: bun x tsc --noEmit
+
+      - name: Build
+        run: bun run build
+        env:
+          NITRO_PRESET: node-server
+
+      - name: Upload build artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: .output/
+          retention-days: 1
+
+  deploy:
+    name: Deploy to OVH
+    needs: ci
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: .output/
+
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
+      - name: Trust server host key
+        env:
+          SSH_HOST: ${{ secrets.OVH_HOST }}
+          SSH_PORT: ${{ secrets.OVH_SSH_PORT }}
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts
+
+      - name: Sync build to server
+        env:
+          SSHPASS: ${{ secrets.OVH_PASSWORD }}
+          SSH_HOST: ${{ secrets.OVH_HOST }}
+          SSH_USER: ${{ secrets.OVH_USER }}
+          SSH_PORT: ${{ secrets.OVH_SSH_PORT }}
+        run: |
+          sshpass -e rsync -avz --delete \
+            -e "ssh -p $SSH_PORT" \
+            .output/ \
+            "$SSH_USER@$SSH_HOST:~/www/.output/"
+
+      - name: Restart app with PM2
+        env:
+          SSHPASS: ${{ secrets.OVH_PASSWORD }}
+          SSH_HOST: ${{ secrets.OVH_HOST }}
+          SSH_USER: ${{ secrets.OVH_USER }}
+          SSH_PORT: ${{ secrets.OVH_SSH_PORT }}
+        run: |
+          sshpass -e ssh -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
+            'pm2 restart marie-viane 2>/dev/null \
+              || (pm2 start ~/www/.output/server/index.mjs --name marie-viane && pm2 save)'
