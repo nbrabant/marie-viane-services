@@ -13,21 +13,18 @@ export default defineConfig({
     server: { entry: "server" },
   },
   // Deployment target (OVH shared hosting — static files only, no Node runtime,
-  // see .github/workflows/ci.yml). Use Nitro's dedicated `static` preset so the
-  // build prerenders every route straight to `.output/public/*.html` with no
-  // server bundle at all. (We previously mixed this with the node-server
-  // preset, which silently suppressed the prerendered output — and also with
-  // TanStack Start's own `prerender` plugin option, which hardcodes an
-  // expectation of `dist/server/server.js` and breaks with ERR_MODULE_NOT_FOUND
-  // under a custom preset — tanstack/router#5939.)
+  // see .github/workflows/ci.yml) needs the Node server preset so the build
+  // emits `.output/server/index.mjs` with the client assets bundled under
+  // `.output/public`. We don't ship the server itself — CI runs it briefly to
+  // snapshot the rendered HTML into `.output/public/` (see ci.yml's "Prerender
+  // pages" step) rather than deploying it. This sidesteps upstream bugs in
+  // both TanStack Start's `prerender` plugin option (hardcodes an expectation
+  // of `dist/server/server.js`, breaks under a custom preset — tanstack/router#5939)
+  // and Nitro's `static` preset (silently produced no HTML for this project).
   // NOTE: inside the Lovable sandbox this option is ignored — the preview always
   // builds with the cloudflare-module preset into `dist/`. It only takes effect
   // in CI (non-sandbox), which is exactly where deployment happens.
   nitro: {
-    preset: "static",
-    prerender: {
-      crawlLinks: true,
-      routes: ["/", "/sitemap.xml"],
-    },
+    preset: "node-server",
   },
 });
