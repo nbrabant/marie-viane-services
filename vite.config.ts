@@ -11,15 +11,13 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
-    // Deployment target (OVH shared hosting — static files only, no Node runtime,
-    // see .github/workflows/ci.yml) so every route is prerendered to static HTML
-    // at build time and `.output/public/` is deployed as-is.
-    prerender: {
-      enabled: true,
-      crawlLinks: true,
-      pages: ["/", "/sitemap.xml"],
-    },
   },
+  // Deployment target (OVH shared hosting — static files only, no Node runtime,
+  // see .github/workflows/ci.yml). Use Nitro's own static-site generation
+  // (`static` + `prerender`) rather than TanStack Start's `prerender` plugin
+  // option — that one boots a "preview server" that hardcodes an expectation
+  // of `dist/server/server.js`, which doesn't exist under the node-server
+  // preset (breaks with ERR_MODULE_NOT_FOUND — tanstack/router#5939).
   // The node-server preset still produces a `.output/server` build, but it's
   // unused — deploy only ships the prerendered `.output/public/` output.
   // NOTE: inside the Lovable sandbox this option is ignored — the preview always
@@ -27,5 +25,10 @@ export default defineConfig({
   // in CI (non-sandbox), which is exactly where deployment happens.
   nitro: {
     preset: "node-server",
+    static: true,
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/sitemap.xml"],
+    },
   },
 });
