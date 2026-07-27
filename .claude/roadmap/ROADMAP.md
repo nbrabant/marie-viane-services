@@ -25,8 +25,8 @@ closes them out on its own.
 These need real information from Marie before the related code can be finalized. Flagging them
 up front so they don't stall a priority tier silently.
 
-- [ ] Real SIRET number (`src/routes/index.tsx` mentions légales section — currently "à compléter")
-- [ ] Real business address (same section — currently "à compléter")
+- [x] Real SIRET number (`src/routes/index.tsx` mentions légales section — currently "à compléter")
+- [x] Real business address (same section — currently "à compléter")
 - [x] Real phone number and email (currently placeholders: `0750653753`, `r-rems@hotmail.fr`)
 - [ ] Typeform form ID (`TYPEFORM_URL` in `src/routes/index.tsx` is `.../to/your-form-id`)
 - [ ] Google Analytics property (GA4 Measurement ID)
@@ -53,13 +53,20 @@ up front so they don't stall a priority tier silently.
 **Effort:** S (assuming link-out) / M (if embedding) · **Depends on:** real Typeform ID
 
 ### 1.b Business information integration
-- [ ] Fill real SIRET + address into the "Mentions légales" section (`index.tsx`, `#mentions-legales`)
+- [x] Fill real SIRET + address into the "Mentions légales" section (`index.tsx`, `#mentions-legales`)
 - [ ] Extend the `LocalBusiness` JSON-LD (`index.tsx` head `scripts`) with `address`
       (`PostalAddress`), and `openingHoursSpecification` — currently only has
       `name`/`description`/`image`/`email`/`telephone`/`priceRange`/`areaServed`/`makesOffer`.
       A complete address is what unlocks Google Business/local-pack rich results.
 - [ ] Update hosting disclosure ("hébergé par Lovable... sur demande") to reflect the actual OVH
       hosting now that deployment target changed (see recent commits `42be3e6`…`292ad0c`)
+- [ ] Display the "Mentions légales" block in a popin/modal instead of directly inline in the page
+      flow (`index.tsx`, `#mentions-legales` section) — the `Dialog` primitive already exists at
+      `src/components/ui/dialog.tsx`, so this is wiring, not a new dependency. Trigger from a
+      footer link/button; keep an anchor-accessible fallback (e.g. still route `#mentions-legales`
+      to open the dialog) so existing/shared links keep working, and make sure the content still
+      renders in the curl-snapshotted static HTML (SEO/legal-compliance text shouldn't become
+      JS-only, ties to the same pre-hydration concern as 2.c)
 
 **Effort:** S (once data is provided) · **Depends on:** SIRET, address
 
