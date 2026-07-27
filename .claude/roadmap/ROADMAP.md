@@ -43,6 +43,8 @@ up front so they don't stall a priority tier silently.
       a particulier's domicile); "fin de chantier" is conditional on the client's own residence.
       Implemented as a popin (see 1.d note below) in `index.tsx` — SAP declaration/authorization
       number intentionally not displayed per owner's choice.
+- [ ] Real opening hours (for `openingHoursSpecification` in the `LocalBusiness` JSON-LD, 1.b) —
+      not yet provided; skipped rather than guessed
 
 ---
 
@@ -59,10 +61,10 @@ up front so they don't stall a priority tier silently.
 
 ### 1.b Business information integration
 - [x] Fill real SIRET + address into the "Mentions légales" section (`index.tsx`, `#mentions-legales`)
-- [ ] Extend the `LocalBusiness` JSON-LD (`index.tsx` head `scripts`) with `address`
-      (`PostalAddress`), and `openingHoursSpecification` — currently only has
-      `name`/`description`/`image`/`email`/`telephone`/`priceRange`/`areaServed`/`makesOffer`.
-      A complete address is what unlocks Google Business/local-pack rich results.
+- [x] Extend the `LocalBusiness` JSON-LD (`index.tsx` head `scripts`) with a `PostalAddress`
+      (40 rue Saint Louis, 59200 Tourcoing, FR) — unlocks Google Business/local-pack rich results
+- [ ] Add `openingHoursSpecification` once Marie confirms real hours — skipped deliberately for
+      now rather than guessing (owner input needed, see top-of-file blocked list)
 - [ ] Update hosting disclosure ("hébergé par Lovable... sur demande") to reflect the actual OVH
       hosting now that deployment target changed (see recent commits `42be3e6`…`292ad0c`)
 - [x] Display the "Mentions légales" block in a popin/modal instead of directly inline in the page

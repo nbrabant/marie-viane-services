@@ -242,6 +242,13 @@ export const Route = createFileRoute("/")({
           image: absoluteUrl(heroImg),
           email: "r-rems@hotmail.fr",
           telephone: "0750653753",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "40 rue Saint Louis",
+            postalCode: "59200",
+            addressLocality: "Tourcoing",
+            addressCountry: "FR",
+          },
           priceRange: "€€",
           areaServed: "France",
           makesOffer: services.map((s) => ({
