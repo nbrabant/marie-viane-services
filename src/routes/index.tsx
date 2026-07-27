@@ -262,13 +262,19 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+function formatFrenchPhone(phone: string) {
+  return phone.replace(/(\d{2})(?=\d)/g, "$1 ").trim();
+}
+
 function Index() {
   const [mentionsLegalesOpen, setMentionsLegalesOpen] = useState(false);
+  const [contact, setContact] = useState<{ phone: string; email: string } | null>(null);
 
   useEffect(() => {
     if (window.location.hash === "#mentions-legales") {
       setMentionsLegalesOpen(true);
     }
+    setContact({ phone: "0750653753", email: "r-rems@hotmail.fr" });
   }, []);
 
   return (
@@ -477,18 +483,22 @@ function Index() {
             </div>
             <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-3">
               <a
-                href="tel:0750653753"
+                href={contact ? `tel:${contact.phone}` : undefined}
                 className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-6 text-center transition-shadow hover:shadow-[var(--shadow-soft)]"
               >
                 <Phone className="h-6 w-6 text-primary" />
-                <span className="text-sm font-medium">07 50 65 37 53</span>
+                <span className="text-sm font-medium">
+                  {contact ? formatFrenchPhone(contact.phone) : "Afficher le numéro"}
+                </span>
               </a>
               <a
-                href="mailto:r-rems@hotmail.fr"
+                href={contact ? `mailto:${contact.email}` : undefined}
                 className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-6 text-center transition-shadow hover:shadow-[var(--shadow-soft)]"
               >
                 <Mail className="h-6 w-6 text-primary" />
-                <span className="text-sm font-medium">r-rems@hotmail.fr</span>
+                <span className="text-sm font-medium">
+                  {contact ? contact.email : "Afficher l'email"}
+                </span>
               </a>
               <div className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-6 text-center">
                 <MapPin className="h-6 w-6 text-primary" />

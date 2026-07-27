@@ -195,20 +195,20 @@ Acceptance criteria:
 **Effort:** S · **Depends on:** logo, real phone/email, domain
 
 ### 2.c Phone/email obfuscation (anti-spam)
-- [ ] Replace the plain-text phone/email in the Contact section (`tel:0750653753`,
+- [x] Replace the plain-text phone/email in the Contact section (`tel:0750653753`,
       `mailto:r-rems@hotmail.fr`, visible `07 50 65 37 53` / `r-rems@hotmail.fr` in
-      `index.tsx`) with a client-side-assembled version: render a placeholder in JSX and fill in
-      the real `href`/text inside a `useEffect` so the value only exists in the DOM after
-      hydration, not in the static HTML that gets curl-snapshotted for deployment or scraped by
-      naive bots
-- [ ] **Known tradeoff, decide deliberately**: the `LocalBusiness` JSON-LD already exposes
-      `email`/`telephone` in plain text (`index.tsx` head `scripts`) — that's intentional and
-      should stay, since it's what Google reads for local search / rich results, and JSON-LD
-      inside a `<script>` tag isn't rendered as clickable/scrapeable page text the same way.
-      Obfuscation here targets human-visible contact links, not structured data.
-- [ ] Confirm the CI curl-snapshot (`ci.yml`, commit `292ad0c`) actually captures pre-hydration
-      HTML — if it runs a headless browser instead, obfuscation needs a different approach
-      (e.g. hydration must complete before snapshot, defeating the purpose)
+      `index.tsx`) with a client-side-assembled version: placeholder ("Afficher le
+      numéro"/"Afficher l'email") renders in JSX with no `href`, and a `useEffect` fills in the
+      real `href`/text after mount, so the value only exists in the DOM after hydration
+- [x] **Known tradeoff, decided**: the `LocalBusiness` JSON-LD still exposes `email`/`telephone`
+      in plain text (`index.tsx` head `scripts`) — kept intentionally, since it's what Google
+      reads for local search / rich results, and JSON-LD inside a `<script>` tag isn't rendered
+      as clickable/scrapeable page text the same way. Obfuscation targets human-visible contact
+      links only, not structured data. The "Mentions légales" and RGPD text (also plain-text
+      phone/email) were left untouched too, out of scope for this item.
+- [x] Confirmed the CI curl-snapshot (`ci.yml`, commit `292ad0c`) captures pre-hydration HTML: it
+      `curl`s the running Node SSR server directly (no headless browser), so the snapshot reflects
+      the placeholder state and the obfuscation holds
 
 **Effort:** S–M · **Depends on:** Priority 1.b (real contact info to obfuscate)
 
