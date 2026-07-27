@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import heroImg from "@/assets/hero.jpg";
 import logo from "@/assets/logo.svg";
@@ -156,6 +157,49 @@ function TaxCreditDetails() {
   );
 }
 
+function MentionsLegalesContent() {
+  return (
+    <div className="space-y-6 text-sm text-muted-foreground">
+      <div>
+        <h3 className="font-semibold text-foreground">Éditeur du site</h3>
+        <p className="mt-2">
+          Le présent site est édité par Marie Viane, entrepreneuse individuelle exerçant une
+          activité d'aide à domicile et de services à la personne.
+          <br />
+          Adresse : 40 rue Saint Louis — 59200 Tourcoing — France.
+          <br />
+          Email : r-rems@hotmail.fr — Téléphone : 07 50 65 37 53.
+          <br />
+          SIRET : 100 804 558 00011.
+        </p>
+      </div>
+      <div>
+        <h3 className="font-semibold text-foreground">Hébergement</h3>
+        <p className="mt-2">
+          Le site est hébergé par OVH. Les informations relatives à l'hébergeur peuvent être
+          communiquées sur demande.
+        </p>
+      </div>
+      <div>
+        <h3 className="font-semibold text-foreground">Propriété intellectuelle</h3>
+        <p className="mt-2">
+          L'ensemble des contenus présents sur ce site (textes, images, logos) est protégé par
+          le droit de la propriété intellectuelle. Toute reproduction sans autorisation est
+          interdite.
+        </p>
+      </div>
+      <div>
+        <h3 className="font-semibold text-foreground">Données personnelles</h3>
+        <p className="mt-2">
+          Les données transmises via le formulaire de contact sont utilisées uniquement pour
+          répondre à votre demande. Conformément au RGPD, vous disposez d'un droit d'accès, de
+          rectification et de suppression de vos données en écrivant à r-rems@hotmail.fr.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -212,6 +256,14 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [mentionsLegalesOpen, setMentionsLegalesOpen] = useState(false);
+
+  useEffect(() => {
+    if (window.location.hash === "#mentions-legales") {
+      setMentionsLegalesOpen(true);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
@@ -449,56 +501,34 @@ function Index() {
           </div>
         </section>
 
-        {/* Mentions légales */}
-        <section id="mentions-legales" className="mx-auto max-w-3xl px-4 py-20">
-          <h2 className="text-2xl font-bold tracking-tight">Mentions légales</h2>
-          <div className="mt-6 space-y-6 text-sm text-muted-foreground">
-            <div>
-              <h3 className="font-semibold text-foreground">Éditeur du site</h3>
-              <p className="mt-2">
-                Le présent site est édité par Marie Viane, entrepreneuse individuelle exerçant une
-                activité d'aide à domicile et de services à la personne.
-                <br />
-                Adresse : 40 rue Saint Louis — 59200 Tourcoing — France.
-                <br />
-                Email : r-rems@hotmail.fr — Téléphone : 07 50 65 37 53.
-                <br />
-                SIRET : 100 804 558 00011.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-foreground">Hébergement</h3>
-              <p className="mt-2">
-                Le site est hébergé par OVH. Les informations relatives à l'hébergeur peuvent être
-                communiquées sur demande.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-foreground">Propriété intellectuelle</h3>
-              <p className="mt-2">
-                L'ensemble des contenus présents sur ce site (textes, images, logos) est protégé par
-                le droit de la propriété intellectuelle. Toute reproduction sans autorisation est
-                interdite.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-foreground">Données personnelles</h3>
-              <p className="mt-2">
-                Les données transmises via le formulaire de contact sont utilisées uniquement pour
-                répondre à votre demande. Conformément au RGPD, vous disposez d'un droit d'accès, de
-                rectification et de suppression de vos données en écrivant à r-rems@hotmail.fr.
-              </p>
-            </div>
-          </div>
-        </section>
+        {/*
+          Mentions légales now open in a popin from the footer instead of sitting inline in the
+          page flow (see Dialog below). This sr-only block keeps the same content anchor-reachable
+          at #mentions-legales and present in the server-rendered HTML for legal-compliance/SEO
+          crawlers and screen readers, same technique used for the tax-credit details above.
+        */}
+        <div id="mentions-legales" className="sr-only">
+          <h2>Mentions légales</h2>
+          <MentionsLegalesContent />
+        </div>
       </main>
 
       <footer className="border-t border-border py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-sm text-muted-foreground sm:flex-row">
           <p>© {new Date().getFullYear()} Marie Viane — Aide à domicile.</p>
-          <a href="#mentions-legales" className="transition-colors hover:text-foreground">
-            Mentions légales
-          </a>
+          <Dialog open={mentionsLegalesOpen} onOpenChange={setMentionsLegalesOpen}>
+            <DialogTrigger asChild>
+              <button type="button" className="transition-colors hover:text-foreground">
+                Mentions légales
+              </button>
+            </DialogTrigger>
+            <DialogContent className="max-h-[85vh] max-w-2xl overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle>Mentions légales</DialogTitle>
+              </DialogHeader>
+              <MentionsLegalesContent />
+            </DialogContent>
+          </Dialog>
         </div>
       </footer>
     </div>

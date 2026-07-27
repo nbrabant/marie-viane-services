@@ -65,13 +65,15 @@ up front so they don't stall a priority tier silently.
       A complete address is what unlocks Google Business/local-pack rich results.
 - [ ] Update hosting disclosure ("hébergé par Lovable... sur demande") to reflect the actual OVH
       hosting now that deployment target changed (see recent commits `42be3e6`…`292ad0c`)
-- [ ] Display the "Mentions légales" block in a popin/modal instead of directly inline in the page
-      flow (`index.tsx`, `#mentions-legales` section) — the `Dialog` primitive already exists at
-      `src/components/ui/dialog.tsx`, so this is wiring, not a new dependency. Trigger from a
-      footer link/button; keep an anchor-accessible fallback (e.g. still route `#mentions-legales`
-      to open the dialog) so existing/shared links keep working, and make sure the content still
-      renders in the curl-snapshotted static HTML (SEO/legal-compliance text shouldn't become
-      JS-only, ties to the same pre-hydration concern as 2.c)
+- [x] Display the "Mentions légales" block in a popin/modal instead of directly inline in the page
+      flow (`index.tsx`). Content extracted into `MentionsLegalesContent`, rendered inside the
+      unmodified `Dialog`/`DialogContent` primitive, triggered from a footer button. Anchor
+      fallback: a `useEffect` on mount opens the dialog if `window.location.hash ===
+      "#mentions-legales"`, and the same content is duplicated in a `<div id="mentions-legales"
+      className="sr-only">` sibling — present in the SSR/curl-snapshotted HTML and reachable by
+      screen readers navigating to that anchor, without needing JS. Uses the same sr-only-twin
+      pattern (not `forceMount`) established for the tax-credit popin after `forceMount` was found
+      to permanently break page scroll (Radix's Overlay wraps itself in `RemoveScroll` on mount).
 
 **Effort:** S (once data is provided) · **Depends on:** SIRET, address
 
