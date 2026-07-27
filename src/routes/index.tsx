@@ -311,17 +311,17 @@ function Index() {
                 Le présent site est édité par Marie Viane, entrepreneuse individuelle exerçant une
                 activité d'aide à domicile et de services à la personne.
                 <br />
-                Adresse : à compléter — France.
+                Adresse : 40 rue Saint Louis — 59200 Tourcoing — France.
                 <br />
                 Email : r-rems@hotmail.fr — Téléphone : 07 50 65 37 53.
                 <br />
-                SIRET : à compléter.
+                SIRET : 100 804 558 00011.
               </p>
             </div>
             <div>
               <h3 className="font-semibold text-foreground">Hébergement</h3>
               <p className="mt-2">
-                Le site est hébergé par Lovable. Les informations relatives à l'hébergeur peuvent être
+                Le site est hébergé par OVH. Les informations relatives à l'hébergeur peuvent être
                 communiquées sur demande.
               </p>
             </div>
