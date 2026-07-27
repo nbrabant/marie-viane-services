@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import heroImg from "@/assets/hero.jpg";
+import { SITE_URL, absoluteUrl } from "@/lib/site";
 import {
   Building2,
   Moon,
@@ -84,12 +85,12 @@ export const Route = createFileRoute("/")({
           "Services à la personne et aide à domicile professionnels : ménage, garde de nuit, toilette, nettoyage de locaux, courses et accompagnement.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { property: "og:image", content: heroImg },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: absoluteUrl(heroImg) },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: heroImg },
+      { name: "twitter:image", content: absoluteUrl(heroImg) },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: SITE_URL }],
     scripts: [
       {
         type: "application/ld+json",
@@ -99,7 +100,8 @@ export const Route = createFileRoute("/")({
           name: "Marie Viane — Aide à domicile",
           description:
             "Professionnelle de l'aide à domicile et des services à la personne : ménage, garde de nuit, aide à la toilette, nettoyage de locaux professionnels, nettoyage de fin de chantier, courses et accompagnement.",
-          image: heroImg,
+          url: SITE_URL,
+          image: absoluteUrl(heroImg),
           email: "r-rems@hotmail.fr",
           telephone: "0750653753",
           priceRange: "€€",
