@@ -36,8 +36,13 @@ up front so they don't stall a priority tier silently.
 - [ ] Logo / visual identity assets — not currently in the repo (only `src/assets/hero.jpg`
       exists); needed for the email signature and print materials below, and could also improve
       `og:image`/favicon on the site itself
-- [ ] Confirmation of eligibility for the "crédit d'impôt services à la personne" (50% tax credit)
-      and any agrément/déclaration SAP number, diplomas or certifications — needed for 1.d (AEO/GEO)
+- [x] Confirmation of eligibility for the "crédit d'impôt services à la personne" (50% tax
+      credit): Marie holds both the simple SAP déclaration and a Conseil Départemental
+      autorisation (covers garde de nuit, aide à la toilette, accompagnement of dependent
+      persons). "Nettoyage de locaux professionnels" stays excluded (professional premises, not
+      a particulier's domicile); "fin de chantier" is conditional on the client's own residence.
+      Implemented as a popin (see 1.d note below) in `index.tsx` — SAP declaration/authorization
+      number intentionally not displayed per owner's choice.
 
 ---
 
@@ -119,9 +124,24 @@ Acceptance criteria:
       into an AI assistant (e.g. "Qu'est-ce que l'aide à domicile ?", "Quel est le tarif d'une
       garde de nuit ?", "Comment bénéficier du crédit d'impôt services à la personne ?") — question
       phrasing matters more for AEO than for classic keyword SEO
-- [ ] Add content for the 50% "crédit d'impôt services à la personne" tax credit — a top query in
-      this vertical in France and currently absent from the whole site; **blocked on owner**
-      confirming eligibility (see top-of-file blocked list)
+- [x] Add content for the 50% "crédit d'impôt services à la personne" tax credit: a compact
+      teaser callout + "Voir les conditions" button was added at the end of the `#services`
+      section (`index.tsx`), opening a `Dialog` popin with general conditions and a per-service
+      eligibility breakdown.
+- [x] AEO/GEO fix for the popin above: first attempt added a `forceMount` prop to
+      `src/components/ui/dialog.tsx`'s `DialogContent` that skipped `Dialog.Portal` so the
+      content would render inline in the SSR HTML instead of only client-side. **That approach
+      was reverted** — `dialog.tsx` is back to the original, unmodified shadcn primitive. Reason:
+      Radix's `DialogOverlayImpl` unconditionally wraps itself in `RemoveScroll` (from
+      `react-remove-scroll`) as soon as it mounts; forcing the Overlay to always mount (even
+      while visually "closed") locked page scroll permanently, site-wide. Fixed instead with a
+      plain `sr-only` duplicate: `index.tsx` now has a `TaxCreditDetails` component rendering the
+      shared conditions/breakdown data, used twice — once inside the real `DialogContent` (normal
+      Radix behavior, no changes) and once inside a `<div className="sr-only">` sibling that's
+      always part of the normal render tree (no Portal, no Presence gating), so it's present in
+      the SSR/curl-snapshotted HTML unconditionally. `sr-only` is the same visually-hidden
+      technique already used elsewhere in `dialog.tsx` (the Close button's "Close" label) —
+      standard, non-cloaking, and doesn't touch Radix's scroll-lock/focus-trap internals at all.
 - [ ] Strengthen E-E-A-T signals in "À propos": years of experience, diplomas/certifications,
       agrément or déclaration SAP number (**blocked on owner**, ties to 1.b) — generative engines
       weight authoritativeness/expertise signals when deciding what to cite

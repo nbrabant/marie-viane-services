@@ -121,6 +121,41 @@ const taxCreditGeneralConditions = [
   "Le crédit d'impôt correspond à 50 % des sommes versées, dans la limite des plafonds annuels fixés par l'administration fiscale (article 199 sexdecies du Code général des impôts).",
 ];
 
+function TaxCreditDetails() {
+  return (
+    <div className="space-y-5 text-sm text-muted-foreground">
+      <div>
+        <h4 className="font-semibold text-foreground">Conditions générales</h4>
+        <ul className="mt-2 space-y-2">
+          {taxCreditGeneralConditions.map((condition) => (
+            <li key={condition} className="flex items-start gap-2">
+              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+              <span>{condition}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h4 className="font-semibold text-foreground">Éligibilité par prestation</h4>
+        <ul className="mt-2 space-y-3">
+          {services.map((service) => (
+            <li key={service.title}>
+              <span className="font-medium text-foreground">{service.title}</span>
+              {" — "}
+              {service.taxCredit.note}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <p className="text-xs">
+        Informations données à titre indicatif et ne remplaçant pas un conseil fiscal personnalisé.
+        Pour connaître les plafonds annuels en vigueur, consultez service-public.fr, impots.gouv.fr
+        ou votre centre des finances publiques.
+      </p>
+    </div>
+  );
+}
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -307,39 +342,25 @@ function Index() {
                       fiscal prévu par l'article 199 sexdecies du Code général des impôts.
                     </DialogDescription>
                   </DialogHeader>
-                  <div className="space-y-5 text-sm text-muted-foreground">
-                    <div>
-                      <h4 className="font-semibold text-foreground">Conditions générales</h4>
-                      <ul className="mt-2 space-y-2">
-                        {taxCreditGeneralConditions.map((condition) => (
-                          <li key={condition} className="flex items-start gap-2">
-                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                            <span>{condition}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">Éligibilité par prestation</h4>
-                      <ul className="mt-2 space-y-3">
-                        {services.map((service) => (
-                          <li key={service.title}>
-                            <span className="font-medium text-foreground">{service.title}</span>
-                            {" — "}
-                            {service.taxCredit.note}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <p className="text-xs">
-                      Informations données à titre indicatif et ne remplaçant pas un conseil
-                      fiscal personnalisé. Pour connaître les plafonds annuels en vigueur,
-                      consultez service-public.fr, impots.gouv.fr ou votre centre des finances
-                      publiques.
-                    </p>
-                  </div>
+                  <TaxCreditDetails />
                 </DialogContent>
               </Dialog>
+              {/*
+                Radix's Dialog only mounts its content once opened (and its Portal never renders
+                during SSR at all), so the popin above is invisible to non-JS crawlers and the
+                curl-snapshotted static build. This sr-only block duplicates the same content
+                (same data, same TaxCreditDetails component) so it's always present in the
+                rendered HTML for search/AI crawlers and screen readers, without affecting sighted
+                users or the page's visual layout.
+              */}
+              <div className="sr-only">
+                <h3>Crédit d'impôt de 50 % — Services à la personne</h3>
+                <p>
+                  Informations générales sur l'éligibilité de mes prestations à l'avantage fiscal
+                  prévu par l'article 199 sexdecies du Code général des impôts.
+                </p>
+                <TaxCreditDetails />
+              </div>
             </div>
           </div>
         </section>
