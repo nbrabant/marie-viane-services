@@ -100,8 +100,8 @@ export const Route = createFileRoute("/")({
           description:
             "Professionnelle de l'aide à domicile et des services à la personne : ménage, garde de nuit, aide à la toilette, nettoyage de locaux professionnels, nettoyage de fin de chantier, courses et accompagnement.",
           image: heroImg,
-          email: "contact@marie-viane.fr",
-          telephone: "+33600000000",
+          email: "r-rems@hotmail.fr",
+          telephone: "0750653753",
           priceRange: "€€",
           areaServed: "France",
           makesOffer: services.map((s) => ({
@@ -268,18 +268,18 @@ function Index() {
             </div>
             <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-3">
               <a
-                href="tel:+33600000000"
+                href="tel:0750653753"
                 className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-6 text-center transition-shadow hover:shadow-[var(--shadow-soft)]"
               >
                 <Phone className="h-6 w-6 text-primary" />
-                <span className="text-sm font-medium">06 00 00 00 00</span>
+                <span className="text-sm font-medium">07 50 65 37 53</span>
               </a>
               <a
-                href="mailto:contact@marie-viane.fr"
+                href="mailto:r-rems@hotmail.fr"
                 className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-6 text-center transition-shadow hover:shadow-[var(--shadow-soft)]"
               >
                 <Mail className="h-6 w-6 text-primary" />
-                <span className="text-sm font-medium">contact@marie-viane.fr</span>
+                <span className="text-sm font-medium">r-rems@hotmail.fr</span>
               </a>
               <div className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-6 text-center">
                 <MapPin className="h-6 w-6 text-primary" />
@@ -311,7 +311,7 @@ function Index() {
                 <br />
                 Adresse : à compléter — France.
                 <br />
-                Email : contact@marie-viane.fr — Téléphone : 06 00 00 00 00.
+                Email : r-rems@hotmail.fr — Téléphone : 07 50 65 37 53.
                 <br />
                 SIRET : à compléter.
               </p>
@@ -336,7 +336,7 @@ function Index() {
               <p className="mt-2">
                 Les données transmises via le formulaire de contact sont utilisées uniquement pour
                 répondre à votre demande. Conformément au RGPD, vous disposez d'un droit d'accès, de
-                rectification et de suppression de vos données en écrivant à contact@marie-viane.fr.
+                rectification et de suppression de vos données en écrivant à r-rems@hotmail.fr.
               </p>
             </div>
           </div>
