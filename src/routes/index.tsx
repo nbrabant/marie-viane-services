@@ -1,5 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import heroImg from "@/assets/hero.jpg";
+import nettoyageImg from "@/assets/services/1_nettoyage.png";
+import gardeDeNuitImg from "@/assets/services/2_garde_de_nuit.png";
+import aideToiletteImg from "@/assets/services/3_aide_toilette.png";
+import menageImg from "@/assets/services/4_menage.png";
+import finChantierImg from "@/assets/services/5_fin_chantier.png";
+import coursesImg from "@/assets/services/6_courses.png";
+import accompagnementImg from "@/assets/services/7_accompagnement.png";
 import { SITE_URL, absoluteUrl } from "@/lib/site";
 import {
   Building2,
@@ -20,42 +27,49 @@ const TYPEFORM_URL = "https://form.typeform.com/to/your-form-id";
 const services = [
   {
     icon: Building2,
+    image: nettoyageImg,
     title: "Nettoyage de locaux professionnels",
     description:
       "Entretien régulier ou ponctuel de bureaux, commerces et espaces professionnels pour un cadre de travail sain.",
   },
   {
     icon: Moon,
+    image: gardeDeNuitImg,
     title: "Garde de nuit à domicile",
     description:
       "Une présence rassurante et attentive durant la nuit pour veiller au confort et à la sécurité de vos proches.",
   },
   {
     icon: Bath,
+    image: aideToiletteImg,
     title: "Aide à la toilette",
     description:
       "Accompagnement à la toilette dans le respect de l'intimité, de la dignité et du bien-être de la personne.",
   },
   {
     icon: Sparkles,
+    image: menageImg,
     title: "Ménage à domicile",
     description:
       "Entretien complet du logement : nettoyage, rangement et repassage pour un intérieur impeccable.",
   },
   {
     icon: Hammer,
+    image: finChantierImg,
     title: "Nettoyage de fin de chantier",
     description:
       "Remise en état après travaux dans le cadre d'un état des lieux, pour un logement prêt à être habité.",
   },
   {
     icon: ShoppingBag,
+    image: coursesImg,
     title: "Courses & approvisionnement",
     description:
       "Réalisation des courses du quotidien selon vos besoins et vos préférences, livrées à domicile.",
   },
   {
     icon: HeartHandshake,
+    image: accompagnementImg,
     title: "Accompagnement",
     description:
       "Accompagnement aux rendez-vous, aux sorties et dans les démarches du quotidien, en toute bienveillance.",
@@ -204,13 +218,22 @@ function Index() {
               {services.map((service) => (
                 <article
                   key={service.title}
-                  className="rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-[var(--shadow-soft)]"
+                  className="overflow-hidden rounded-2xl border border-border bg-card transition-shadow hover:shadow-[var(--shadow-soft)]"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-primary">
-                    <service.icon className="h-6 w-6" />
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[4/3] w-full object-cover sm:aspect-video"
+                  />
+                  <div className="p-6">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-primary">
+                      <service.icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="mt-5 text-lg font-semibold">{service.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
                   </div>
-                  <h3 className="mt-5 text-lg font-semibold">{service.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
                 </article>
               ))}
             </div>
