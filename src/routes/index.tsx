@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import heroImg from "@/assets/hero.jpg";
+import logo from "@/assets/logo.svg";
 import nettoyageImg from "@/assets/services/1_nettoyage.png";
 import gardeDeNuitImg from "@/assets/services/2_garde_de_nuit.png";
 import aideToiletteImg from "@/assets/services/3_aide_toilette.png";
@@ -8,6 +9,14 @@ import finChantierImg from "@/assets/services/5_fin_chantier.png";
 import coursesImg from "@/assets/services/6_courses.png";
 import accompagnementImg from "@/assets/services/7_accompagnement.png";
 import { SITE_URL, absoluteUrl } from "@/lib/site";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import {
   Building2,
   Moon,
@@ -20,6 +29,7 @@ import {
   Mail,
   MapPin,
   CheckCircle2,
+  Percent,
 } from "lucide-react";
 
 const TYPEFORM_URL = "https://form.typeform.com/to/your-form-id";
@@ -31,6 +41,10 @@ const services = [
     title: "Nettoyage de locaux professionnels",
     description:
       "Entretien régulier ou ponctuel de bureaux, commerces et espaces professionnels pour un cadre de travail sain.",
+    taxCredit: {
+      eligible: false,
+      note: "Non éligible : prestation réalisée dans des locaux professionnels, en dehors du champ des services à la personne réservé au domicile des particuliers.",
+    },
   },
   {
     icon: Moon,
@@ -38,6 +52,10 @@ const services = [
     title: "Garde de nuit à domicile",
     description:
       "Une présence rassurante et attentive durant la nuit pour veiller au confort et à la sécurité de vos proches.",
+    taxCredit: {
+      eligible: true,
+      note: "Éligible, dans le cadre de mon autorisation du Conseil Départemental pour l'accompagnement des personnes âgées, handicapées ou dépendantes.",
+    },
   },
   {
     icon: Bath,
@@ -45,6 +63,10 @@ const services = [
     title: "Aide à la toilette",
     description:
       "Accompagnement à la toilette dans le respect de l'intimité, de la dignité et du bien-être de la personne.",
+    taxCredit: {
+      eligible: true,
+      note: "Éligible, activité soumise à autorisation du Conseil Départemental, dont je dispose.",
+    },
   },
   {
     icon: Sparkles,
@@ -52,6 +74,10 @@ const services = [
     title: "Ménage à domicile",
     description:
       "Entretien complet du logement : nettoyage, rangement et repassage pour un intérieur impeccable.",
+    taxCredit: {
+      eligible: true,
+      note: "Éligible, prestation réalisée à votre domicile (résidence principale ou secondaire).",
+    },
   },
   {
     icon: Hammer,
@@ -59,6 +85,10 @@ const services = [
     title: "Nettoyage de fin de chantier",
     description:
       "Remise en état après travaux dans le cadre d'un état des lieux, pour un logement prêt à être habité.",
+    taxCredit: {
+      eligible: "conditional" as const,
+      note: "Éligible uniquement lorsque la prestation est réalisée à votre domicile (résidence principale ou secondaire) ; non éligible pour un chantier professionnel.",
+    },
   },
   {
     icon: ShoppingBag,
@@ -66,6 +96,10 @@ const services = [
     title: "Courses & approvisionnement",
     description:
       "Réalisation des courses du quotidien selon vos besoins et vos préférences, livrées à domicile.",
+    taxCredit: {
+      eligible: "conditional" as const,
+      note: "Seul l'acte de livraison ouvre droit au crédit d'impôt ; le montant des achats en est exclu.",
+    },
   },
   {
     icon: HeartHandshake,
@@ -73,7 +107,18 @@ const services = [
     title: "Accompagnement",
     description:
       "Accompagnement aux rendez-vous, aux sorties et dans les démarches du quotidien, en toute bienveillance.",
+    taxCredit: {
+      eligible: "conditional" as const,
+      note: "Éligible lorsque la prestation bénéficie à une personne âgée, handicapée ou dépendante, dans le cadre d'une offre globale de services à la personne incluant une prestation à domicile.",
+    },
   },
+];
+
+const taxCreditGeneralConditions = [
+  "La prestation est réalisée à votre domicile (résidence principale ou secondaire), ou dans son environnement immédiat pour les activités de livraison et d'accompagnement concernées.",
+  "Vous êtes un particulier : les professionnels, sociétés, copropriétés et bailleurs ne sont pas éligibles à cet avantage fiscal.",
+  "Le règlement est effectué autrement qu'en espèces (aucun avantage fiscal en cas de paiement en espèces).",
+  "Le crédit d'impôt correspond à 50 % des sommes versées, dans la limite des plafonds annuels fixés par l'administration fiscale (article 199 sexdecies du Code général des impôts).",
 ];
 
 export const Route = createFileRoute("/")({
@@ -136,8 +181,8 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-          <a href="#accueil" className="text-lg font-semibold tracking-tight text-primary">
-            Marie Viane
+          <a href="#accueil" className="shrink-0">
+            <img src={logo} alt="Marie Viane — Aide à domicile & services à la personne" className="h-11 w-auto sm:h-12" />
           </a>
           <div className="hidden items-center gap-7 text-sm font-medium md:flex">
             <a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">
@@ -236,6 +281,65 @@ function Index() {
                   </div>
                 </article>
               ))}
+            </div>
+
+            <div className="mt-10 flex flex-col items-center gap-4 rounded-2xl border border-border bg-card p-6 text-center sm:flex-row sm:justify-between sm:text-left">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary">
+                  <Percent className="h-5 w-5" />
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Certaines de mes prestations réalisées à votre domicile ouvrent droit à un{" "}
+                  <span className="font-semibold text-foreground">crédit d'impôt de 50 %</span>.
+                </p>
+              </div>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className="inline-flex shrink-0 items-center justify-center rounded-full border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted">
+                    Voir les conditions
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="max-h-[85vh] max-w-2xl overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle>Crédit d'impôt de 50 % — Services à la personne</DialogTitle>
+                    <DialogDescription>
+                      Informations générales sur l'éligibilité de mes prestations à l'avantage
+                      fiscal prévu par l'article 199 sexdecies du Code général des impôts.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="space-y-5 text-sm text-muted-foreground">
+                    <div>
+                      <h4 className="font-semibold text-foreground">Conditions générales</h4>
+                      <ul className="mt-2 space-y-2">
+                        {taxCreditGeneralConditions.map((condition) => (
+                          <li key={condition} className="flex items-start gap-2">
+                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                            <span>{condition}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-foreground">Éligibilité par prestation</h4>
+                      <ul className="mt-2 space-y-3">
+                        {services.map((service) => (
+                          <li key={service.title}>
+                            <span className="font-medium text-foreground">{service.title}</span>
+                            {" — "}
+                            {service.taxCredit.note}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <p className="text-xs">
+                      Informations données à titre indicatif et ne remplaçant pas un conseil
+                      fiscal personnalisé. Pour connaître les plafonds annuels en vigueur,
+                      consultez service-public.fr, impots.gouv.fr ou votre centre des finances
+                      publiques.
+                    </p>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </section>
