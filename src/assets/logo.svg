@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 15 330 90" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 15 350 90" width="100%" height="100%">
   <!-- Logo Icon: Home + Leaf Sparkle -->
   <g transform="translate(30, 22)">
     <!-- Soft background circle -->
     <circle cx="38" cy="38" r="34" fill="#F0F4F8"/>
     <!-- House outline -->
-    <path d="M 18 42 L 38 22 L 58 42 V 60 C 58 63 55 66 52 66 H 24 C 21 66 18 63 18 60 Z" 
+    <path d="M 18 42 L 38 22 L 58 42 V 60 C 58 63 55 66 52 66 H 24 C 21 66 18 63 18 60 Z"
           fill="none" stroke="#1E293B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
     <!-- Caring Leaf/Sparkle inside -->
     <path d="M 38 34 C 44 34 46 42 46 48 C 40 48 38 42 38 34 Z" fill="#588157"/>
@@ -12,6 +12,6 @@
   </g>
 
   <!-- Typography -->
-  <text x="120" y="50" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="26" font-weight="800" fill="#1E293B" letter-spacing="1">MV SERVICES</text>
-  <text x="121" y="74" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="11" font-weight="600" fill="#588157" letter-spacing="2">AIDE À DOMICILE &amp; NETTOYAGE</text>
+  <text x="110" y="60" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="28" font-weight="800" fill="#1E293B" letter-spacing="1">MV SERVICES</text>
+  <text x="110" y="80" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="13" font-weight="600" fill="#588157" letter-spacing="2">AIDE À DOMICILE &amp; NETTOYAGE</text>
 </svg>

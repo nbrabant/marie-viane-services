@@ -269,7 +269,7 @@ function Index() {
       <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
           <a href="#accueil" className="shrink-0">
-            <img src={logo} alt="Marie Viane — Aide à domicile & services à la personne" className="h-11 w-auto sm:h-12" />
+            <img src={logo} alt="Marie Viane — Aide à domicile & services à la personne" className="h-14 w-auto sm:h-16" />
           </a>
           <div className="hidden items-center gap-7 text-sm font-medium md:flex">
             <a href="#services" className="text-muted-foreground transition-colors hover:text-foreground">
