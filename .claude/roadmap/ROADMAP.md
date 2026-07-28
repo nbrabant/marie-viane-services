@@ -65,8 +65,10 @@ up front so they don't stall a priority tier silently.
       (40 rue Saint Louis, 59200 Tourcoing, FR) — unlocks Google Business/local-pack rich results
 - [ ] Add `openingHoursSpecification` once Marie confirms real hours — skipped deliberately for
       now rather than guessing (owner input needed, see top-of-file blocked list)
-- [ ] Update hosting disclosure ("hébergé par Lovable... sur demande") to reflect the actual OVH
-      hosting now that deployment target changed (see recent commits `42be3e6`…`292ad0c`)
+- [x] Update hosting disclosure ("hébergé par Lovable... sur demande") to reflect the actual OVH
+      hosting now that deployment target changed (see recent commits `42be3e6`…`292ad0c`) — the
+      "Hébergement" block in `index.tsx`'s Mentions légales now states "Le site est hébergé par
+      OVH."
 - [x] Display the "Mentions légales" block in a popin/modal instead of directly inline in the page
       flow (`index.tsx`). Content extracted into `MentionsLegalesContent`, rendered inside the
       unmodified `Dialog`/`DialogContent` primitive, triggered from a footer button. Anchor
@@ -94,9 +96,10 @@ up front so they don't stall a priority tier silently.
       `srcset`/AVIF-WebP if it's not already reasonably sized
 - [ ] Internal anchors already exist (`#services`, `#apropos`, `#contact`) — make sure new
       sections (`#avis`, `#faq`) are added to the header nav for consistency
-- [ ] Verify canonical/OG/Twitter tags once the real domain is set (`og:url: "/"` in `index.tsx`
+- [x] Verify canonical/OG/Twitter tags once the real domain is set (`og:url: "/"` in `index.tsx`
       is relative — confirm TanStack Start resolves this correctly against the final domain, or
-      make it absolute)
+      make it absolute) — `og:url` and the `canonical` link now use the absolute `SITE_URL`, and
+      `og:image`/`twitter:image` use `absoluteUrl(heroImg)`
 
 **Effort:** M, ongoing · **Depends on:** domain, service area
 
@@ -238,14 +241,16 @@ Acceptance criteria:
 - [x] File already exists at `public/robots.txt` (`User-agent: *` / `Allow: /`) and needs no
       deploy wiring — Vite/Nitro copies `public/` straight into `.output/public/`, which is what
       `ci.yml`'s `rsync` step ships to OVH. This is a content edit only, not a pipeline change.
-- [ ] Add a `Sitemap: https://<domain>/sitemap.xml` line once the production domain is set
-- [ ] Confirm no routes need disallowing (single page today — revisit if `/mentions-legales` or
-      future routes are split out)
+- [x] Add a `Sitemap: https://<domain>/sitemap.xml` line once the production domain is set —
+      `public/robots.txt` now has `Sitemap: https://www.mv-services.pro/sitemap.xml`
+- [x] Confirm no routes need disallowing (single page today — revisit if `/mentions-legales` or
+      future routes are split out) — still a single route (`/`), nothing to disallow
 
 ### 3.b Sitemap
-- [ ] Fix `BASE_URL` placeholder in `src/routes/sitemap[.]xml.ts` (currently `""`, TODO comment
-      says "replace once a project name or custom domain is set")
-- [ ] Confirms with domain decision above
+- [x] Fix `BASE_URL` placeholder in `src/routes/sitemap[.]xml.ts` (currently `""`, TODO comment
+      says "replace once a project name or custom domain is set") — now imports and uses
+      `SITE_URL` from `src/lib/site.ts`, TODO comment removed
+- [x] Confirms with domain decision above
 
 ### 3.c QR code generation & hosting
 - [ ] Decide the QR target: simplest is the production domain root with UTM params (e.g.
