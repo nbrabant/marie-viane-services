@@ -259,11 +259,14 @@ Acceptance criteria:
 - [x] Confirms with domain decision above
 
 ### 3.c QR code generation & hosting
-- [ ] Decide the QR target: simplest is the production domain root with UTM params (e.g.
+- [x] Decide the QR target: simplest is the production domain root with UTM params (e.g.
       `https://<domain>/?utm_source=qr&utm_medium=print&utm_campaign=carte-visite`) so scans are
-      attributable in GA (ties to 2.a) without needing a dedicated landing route
-- [ ] Generate the QR code image (static PNG/SVG) once the domain is final
-- [ ] Hosting is trivial and follows the same pattern as `robots.txt` (3.a): drop the generated
+      attributable in GA (ties to 2.a) without needing a dedicated landing route — used
+      `https://www.mv-services.pro/?utm_source=qr&utm_medium=print&utm_campaign=carte-visite`
+- [x] Generate the QR code image (static PNG/SVG) once the domain is final — generated with the
+      `qrcode` npm CLI (via `npx`, no new `package.json` dependency), producing both
+      `public/qrcode.svg` (scalable, for print) and `public/qrcode.png` (1024×1024 raster)
+- [x] Hosting is trivial and follows the same pattern as `robots.txt` (3.a): drop the generated
       file into `public/`, it rides through the existing Vite/Nitro static copy + `ci.yml` rsync
       to OVH with no pipeline changes
 - [ ] Hand the final QR asset off for use on the visit card and flyer (Priority 4)
