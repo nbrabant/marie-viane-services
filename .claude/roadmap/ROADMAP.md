@@ -33,9 +33,15 @@ up front so they don't stall a priority tier silently.
 - [x] Final production domain name: `https://www.mv-services.pro` (set in `src/lib/site.ts`, used by
       `robots.txt`, `sitemap.xml`, canonical/OG URLs, JSON-LD)
 - [ ] 3–10 real customer testimonials (text, first name, optionally service type) for the REX section
-- [ ] Logo / visual identity assets — not currently in the repo (only `src/assets/hero.jpg`
-      exists); needed for the email signature and print materials below, and could also improve
-      `og:image`/favicon on the site itself
+- [x] Logo / visual identity assets — `src/assets/logo.svg` (header wordmark) now exists, plus
+      `src/assets/favicon.svg` (the house+leaf icon mark cropped to a square viewBox). Favicon is
+      wired up: `public/favicon.svg` + a `rel="icon" type="image/svg+xml"` link in
+      `src/routes/__root.tsx`, covering all modern evergreen browsers. Still open: a PNG/ICO
+      fallback (`apple-touch-icon.png`, legacy `.ico`) for iOS home-screen icons and very old
+      browsers — no SVG-to-raster tool is available in this environment, so those PNGs need to be
+      generated externally and dropped into `public/` (owner said they'd provide them). Still
+      needed for the email signature (2.b) and print materials (4.a) below; could still be reused
+      to improve `og:image`.
 - [x] Confirmation of eligibility for the "crédit d'impôt services à la personne" (50% tax
       credit): Marie holds both the simple SAP déclaration and a Conseil Départemental
       autorisation (covers garde de nuit, aide à la toilette, accompagnement of dependent
