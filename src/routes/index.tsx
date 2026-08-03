@@ -33,7 +33,7 @@ import {
   Percent,
 } from "lucide-react";
 
-const TYPEFORM_URL = "https://form.typeform.com/to/your-form-id";
+const TYPEFORM_URL = "https://form.jotform.com/262146727751057";
 
 const services = [
   {
@@ -55,7 +55,7 @@ const services = [
       "Une présence rassurante et attentive durant la nuit pour veiller au confort et à la sécurité de vos proches.",
     taxCredit: {
       eligible: true,
-      note: "Éligible, dans le cadre de mon autorisation du Conseil Départemental pour l'accompagnement des personnes âgées, handicapées ou dépendantes.",
+      note: "Éligible, dans le cadre de mon autorisation du Conseil Départemental pour l'accompagnement des personnes âgées, handicapées ou dépendantes. Possibilité d'aide au coucher e au lever",
     },
   },
   {

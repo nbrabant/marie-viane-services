@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Flyer A6 - MV Services - Format Standard 105x148.5mm -->
+<svg xmlns="http://www.w3.org/2000/svg" width="105mm" height="148.5mm" viewBox="0 0 105 148.5">
+  <!-- Fond de page blanc -->
+  <rect x="0" y="0" width="105" height="148.5" fill="#FFFFFF"/>
+
+  <!-- ================= EN-TÊTE & LOGO ================= -->
+  <g transform="translate(6, 4) scale(0.24) translate(-30, -22)">
+    <g transform="translate(30, 22)">
+      <circle cx="38" cy="38" r="34" fill="#F0F4F8"/>
+      <path d="M 18 42 L 38 22 L 58 42 V 60 C 58 63 55 66 52 66 H 24 C 21 66 18 63 18 60 Z"
+            fill="none" stroke="#1E293B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 38 34 C 44 34 46 42 46 48 C 40 48 38 42 38 34 Z" fill="#588157"/>
+      <path d="M 38 34 C 32 34 30 42 30 48 C 36 48 38 42 38 34 Z" fill="#2A9D8F"/>
+    </g>
+    <text x="110" y="60" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="28" font-weight="800" fill="#1E293B" letter-spacing="1">MV SERVICES</text>
+    <text x="110" y="80" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="12" font-weight="600" fill="#588157" letter-spacing="2">AIDE À DOMICILE &amp; NETTOYAGE</text>
+  </g>
+
+
+  <!-- Ligne séparatrice sous header -->
+  <line x1="6" y1="21" x2="99" y2="21" stroke="#E2E8F0" stroke-width="0.4"/>
+
+  <!-- ================= ACCROCHE PRINCIPALE ================= -->
+  <text x="52.5" y="27" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="4.2" font-weight="800" fill="#1E293B" text-anchor="middle">VOTRE QUOTIDIEN PLUS SIMPLE &amp; SEREIN</text>
+  <text x="52.5" y="31.2" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="2.4" font-weight="600" fill="#588157" text-anchor="middle">Des prestations de qualité adaptées à vos besoins sur-mesure</text>
+
+  <!-- ================= BANNER CRÉDIT D'IMPÔT (50%) ================= -->
+  <g transform="translate(6, 34.5)">
+    <rect x="0" y="0" width="93" height="16" rx="2" fill="#2A9D8F" fill-opacity="0.1" stroke="#2A9D8F" stroke-width="0.5"/>
+    
+    <!-- Macaron 50% -->
+    <rect x="2.5" y="2.2" width="22" height="11.6" rx="1.5" fill="#2A9D8F"/>
+    <text x="13.5" y="7.7" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="5" font-weight="800" fill="#FFFFFF" text-anchor="middle">50%</text>
+    <text x="13.5" y="11" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">DE CRÉDIT D'IMPÔT</text>
+
+    <!-- Explication Avance Immédiate URSSAF -->
+    <text x="27" y="5.8" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="2.7" font-weight="800" fill="#1E293B">AVANCE IMMÉDIATE DISPONIBLE</text>
+    <text x="27" y="9.2" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="2.1" font-weight="600" fill="#588157">Ne réglez que 50 % du montant total de votre facture !</text>
+    <text x="27" y="12.2" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.8" font-weight="500" fill="#1E293B" opacity="0.75">Aucune avance de trésorerie • Service agréé Services à la Personne</text>
+  </g>
+
+  <!-- ================= SECTIONS SERVICES (4 BLOCS) ================= -->
+  <text x="6" y="55.5" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="3" font-weight="800" fill="#2A9D8F" letter-spacing="0.5">MES SERVICES</text>
+
+  <!-- Bloc 1 : Aide & Accompagnement -->
+  <g transform="translate(6, 58)">
+    <rect x="0" y="0" width="45" height="23" rx="2" fill="#F0F4F8"/>
+    <rect x="0" y="0" width="1.5" height="23" rx="0.75" fill="#2A9D8F"/>
+    
+    <text x="4" y="4.5" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="2.5" font-weight="800" fill="#1E293B">Aide &amp; Accompagnement</text>
+    <line x1="4" y1="6.2" x2="41" y2="6.2" stroke="#2A9D8F" stroke-width="0.3" opacity="0.4"/>
+
+    <circle cx="5" cy="9.5" r="0.8" fill="#588157"/>
+    <text x="7.5" y="10.2" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.9" font-weight="600" fill="#1E293B">Aide aux gestes du quotidien</text>
+    
+    <circle cx="5" cy="14" r="0.8" fill="#588157"/>
+    <text x="7.5" y="14.7" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.9" font-weight="600" fill="#1E293B">Accompagnement courses &amp; RDV</text>
+
+    <circle cx="5" cy="18.5" r="0.8" fill="#588157"/>
+    <text x="7.5" y="19.2" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.9" font-weight="600" fill="#1E293B">Présence &amp; soutien moral</text>
+  </g>
+
+  <!-- Bloc 2 : Ménage & Repassage -->
+  <g transform="translate(54, 58)">
+    <rect x="0" y="0" width="45" height="23" rx="2" fill="#F0F4F8"/>
+    <rect x="0" y="0" width="1.5" height="23" rx="0.75" fill="#588157"/>
+    
+    <text x="4" y="4.5" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="2.5" font-weight="800" fill="#1E293B">Ménage &amp; Repassage</text>
+    <line x1="4" y1="6.2" x2="41" y2="6.2" stroke="#588157" stroke-width="0.3" opacity="0.4"/>
+
+    <circle cx="5" cy="9.5" r="0.8" fill="#2A9D8F"/>
+    <text x="7.5" y="10.2" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.9" font-weight="600" fill="#1E293B">Entretien régulier de la maison</text>
+
+    <circle cx="5" cy="14" r="0.8" fill="#2A9D8F"/>
+    <text x="7.5" y="14.7" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.9" font-weight="600" fill="#1E293B">Soin du linge &amp; repassage</text>
+
+    <circle cx="5" cy="18.5" r="0.8" fill="#2A9D8F"/>
+    <text x="7.5" y="19.2" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.9" font-weight="600" fill="#1E293B">Grand nettoyage de saison</text>
+  </g>
+
+  <!-- Bloc 3 : Nettoyage Professionnel -->
+  <g transform="translate(6, 83.5)">
+    <rect x="0" y="0" width="45" height="23" rx="2" fill="#F0F4F8"/>
+    <rect x="0" y="0" width="1.5" height="23" rx="0.75" fill="#588157"/>
+
+    <text x="4" y="4.5" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="2.5" font-weight="800" fill="#1E293B">Nettoyage Professionnel</text>
+    <line x1="4" y1="6.2" x2="41" y2="6.2" stroke="#588157" stroke-width="0.3" opacity="0.4"/>
+
+    <circle cx="5" cy="9.5" r="0.8" fill="#2A9D8F"/>
+    <text x="7.5" y="10.2" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.9" font-weight="600" fill="#1E293B">Lavage de vitres &amp; baies</text>
+
+    <circle cx="5" cy="14" r="0.8" fill="#2A9D8F"/>
+    <text x="7.5" y="14.7" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.9" font-weight="600" fill="#1E293B">Remise en état après travaux</text>
+
+    <circle cx="5" cy="18.5" r="0.8" fill="#2A9D8F"/>
+    <text x="7.5" y="19.2" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.9" font-weight="600" fill="#1E293B">Fin de chantier &amp; emménagement</text>
+  </g>
+
+  <!-- Bloc 4 : Prestations Sur-Mesure -->
+  <g transform="translate(54, 83.5)">
+    <rect x="0" y="0" width="45" height="23" rx="2" fill="#F0F4F8"/>
+    <rect x="0" y="0" width="1.5" height="23" rx="0.75" fill="#2A9D8F"/>
+
+    <text x="4" y="4.5" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="2.5" font-weight="800" fill="#1E293B">Prestations Sur-Mesure</text>
+    <line x1="4" y1="6.2" x2="41" y2="6.2" stroke="#2A9D8F" stroke-width="0.3" opacity="0.4"/>
+
+    <circle cx="5" cy="9.5" r="0.8" fill="#588157"/>
+    <text x="7.5" y="10.2" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.9" font-weight="600" fill="#1E293B">Interventions régulières / régulières</text>
+
+    <circle cx="5" cy="14" r="0.8" fill="#588157"/>
+    <text x="7.5" y="14.7" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.9" font-weight="600" fill="#1E293B">Évaluation gratuite des besoins</text>
+
+    <circle cx="5" cy="18.5" r="0.8" fill="#588157"/>
+    <text x="7.5" y="19.2" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.9" font-weight="600" fill="#1E293B">Suivi &amp; accompagnement dédié</text>
+  </g>
+
+  <!-- ================= BANDEAU DE RÉASSURANCE ================= -->
+  <g transform="translate(6, 109)">
+    <rect x="0" y="0" width="93" height="7.5" rx="1.5" fill="#1E293B" opacity="0.04"/>
+    
+    <circle cx="5" cy="3.75" r="1.2" fill="#2A9D8F"/>
+    <text x="7.5" y="4.3" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.8" font-weight="700" fill="#1E293B">Proximité &amp; Réactivité</text>
+
+    <circle cx="34" cy="3.75" r="1.2" fill="#2A9D8F"/>
+    <text x="36.5" y="4.3" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.8" font-weight="700" fill="#1E293B">Intervenants De Confiance</text>
+
+    <circle cx="65" cy="3.75" r="1.2" fill="#2A9D8F"/>
+    <text x="67.5" y="4.3" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.8" font-weight="700" fill="#1E293B">Zéro Tracas Administratif</text>
+  </g>
+
+  <!-- ================= PIED DE PAGE ET CONTACT (FOND SOMBRE) ================= -->
+  <g transform="translate(0, 118.5)">
+    <!-- Rectangle de fond bleu ardoise (#1E293B) -->
+    <rect x="0" y="0" width="105" height="30" fill="#1E293B"/>
+    <rect x="0" y="0" width="105" height="0.8" fill="#2A9D8F"/>
+
+    <!-- Colonne Gauche : Coordonnées -->
+    <g transform="translate(6, 4)">
+      <text x="0" y="4.2" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="4" font-weight="700" fill="#FFFFFF">Marie Viane <tspan font-weight="500" fill="#94A3B8">• Gérante</tspan></text>
+
+      <!-- Téléphone -->
+      <g transform="translate(0, 8.5)">
+        <circle cx="1.5" cy="1.5" r="1.5" fill="#334155"/>
+        <path d="M1 0.8 C1 0.6 1.2 0.5 1.4 0.5 H1.8 C1.9 0.5 2 0.6 2 0.7 L2.2 1.3 C2.3 1.4 2.2 1.5 2.1 1.6 L1.8 1.9 C2.1 2.5 2.5 2.9 3.1 3.2 L3.4 2.9 C3.5 2.8 3.6 2.7 3.7 2.8 L4.3 3 C4.4 3 4.5 3.1 4.5 3.2 V3.6 C4.5 3.8 4.3 4 4.1 4 C2.3 4 1 2.7 1 0.9 Z" fill="#2A9D8F" transform="scale(0.7)"/>
+        <text x="5" y="2.3" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="3" font-weight="800" fill="#FFFFFF">07 50 65 37 53</text>
+      </g>
+
+      <!-- Email -->
+      <g transform="translate(0, 13.5)">
+        <circle cx="1.5" cy="1.5" r="1.5" fill="#334155"/>
+        <rect x="0.8" y="0.9" width="1.4" height="1.1" fill="none" stroke="#2A9D8F" stroke-width="0.3" rx="0.2"/>
+        <path d="M0.8 0.9 L1.5 1.5 L2.2 0.9" fill="none" stroke="#2A9D8F" stroke-width="0.3"/>
+        <text x="5" y="2.2" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="2.2" font-weight="600" fill="#E2E8F0">r-rems@hotmail.fr</text>
+      </g>
+
+      <!-- Site Web -->
+      <g transform="translate(0, 18.5)">
+        <circle cx="1.5" cy="1.5" r="1.5" fill="#334155"/>
+        <circle cx="1.5" cy="1.5" r="1.1" fill="none" stroke="#2A9D8F" stroke-width="0.3"/>
+        <line x1="0.4" y1="1.5" x2="2.6" y2="1.5" stroke="#2A9D8F" stroke-width="0.2"/>
+        <text x="5" y="2.3" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="2.7" font-weight="800" fill="#2A9D8F">www.mv-services.pro</text>
+      </g>
+    </g>
+
+    <!-- Ligne verticale de séparation -->
+    <line x1="68" y1="4" x2="68" y2="25" stroke="#334155" stroke-width="0.4"/>
+
+    <!-- Colonne Droite : QR Code vectoriel exact -->
+    <g transform="translate(72, 1)">
+      <!-- Matrice QR Code exacte de la carte verso -->
+      <g transform="translate(3, 3) scale(0.42857)">
+        <path fill="#ffffff" d="M0 0h49v49H0z"/><path stroke="#000000" d="M4 4.5h7m2 0h1m2 0h1m1 0h1m2 0h10m1 0h1m1 0h3m1 0h7M4 5.5h1m5 0h1m8 0h3m3 0h1m2 0h5m1 0h1m3 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m1 0h3m2 0h4m1 0h4m1 0h1m1 0h2m3 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h2m1 0h3m2 0h1m4 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h6m1 0h1m1 0h7m4 0h1m2 0h2m1 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m1 0h1m2 0h3m1 0h1m4 0h1m1 0h6m2 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h3m2 0h3m2 0h1m1 0h2m5 0h2m2 0h2M4 12.5h1m1 0h5m2 0h2m2 0h5m4 0h1m2 0h1m2 0h2m1 0h2m1 0h5M4 13.5h3m5 0h1m1 0h1m2 0h2m1 0h2m1 0h1m3 0h1m4 0h1m2 0h2m1 0h3m1 0h1m1 0h1M6 14.5h1m2 0h2m1 0h2m1 0h1m2 0h3m1 0h1m1 0h3m1 0h1m2 0h2m3 0h1M7 15.5h3m4 0h2m1 0h1m1 0h1m3 0h1m1 0h4m1 0h3m2 0h2m2 0h1m1 0h1M5 16.5h1m1 0h2m1 0h1m2 0h1m7 0h1m2 0h3m1 0h3m1 0h2m1 0h1m1 0h1m3 0h4M5 17.5h1m1 0h2m2 0h1m4 0h2m1 0h1m6 0h1m3 0h2m1 0h1m2 0h2m1 0h4m1 0h1M4 18.5h1m2 0h1m2 0h2m4 0h1m3 0h1m3 0h5m2 0h2m2 0h1m1 0h1m2 0h3M4 19.5h1m1 0h1m4 0h3m4 0h2m5 0h3m3 0h1m3 0h2m1 0h3M6 20.5h5m1 0h1m3 0h4m1 0h2m1 0h1m1 0h6m3 0h3m1 0h1m1 0h2m1 0h1M4 21.5h1m2 0h2m3 0h5m1 0h2m2 0h3m2 0h1m4 0h2m1 0h2m1 0h3m2 0h2M4 22.5h3m1 0h6m2 0h2m1 0h2m1 0h1m3 0h1m4 0h3m2 0h1m1 0h1m1 0h1m2 0h1M4 23.5h1m1 0h1m1 0h1m8 0h3m3 0h1m3 0h1m2 0h2m1 0h2m1 0h1m3 0h2m2 0h1M7 24.5h1m2 0h1m3 0h1m1 0h3m3 0h1m2 0h2m4 0h2m8 0h2m1 0h1M5 25.5h2m6 0h1m1 0h3m1 0h1m3 0h2m2 0h1m1 0h2m3 0h3m2 0h2m2 0h2M4 26.5h3m1 0h7m4 0h1m2 0h1m1 0h2m4 0h4m2 0h1m3 0h3M4 27.5h5m2 0h1m2 0h2m6 0h1m1 0h3m3 0h3m2 0h1m1 0h1m1 0h3M4 28.5h2m4 0h1m1 0h4m3 0h1m1 0h1m2 0h1m1 0h1m2 0h3m1 0h1m3 0h1m4 0h1M4 29.5h1m1 0h2m1 0h1m2 0h1m2 0h4m1 0h1m2 0h2m2 0h1m2 0h1m1 0h1m2 0h1m1 0h5m1 0h2M4 30.5h7m2 0h2m1 0h3m1 0h1m3 0h1m1 0h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h3M4 31.5h1m1 0h2m9 0h1m2 0h1m3 0h3m5 0h1m1 0h5m2 0h1m1 0h2M6 32.5h5m2 0h3m1 0h1m2 0h2m4 0h1m2 0h1m3 0h1m1 0h2m1 0h2m1 0h2M4 33.5h3m1 0h1m3 0h1m1 0h1m1 0h1m1 0h5m1 0h2m2 0h1m2 0h4m2 0h1m1 0h4m1 0h1M4 34.5h1m2 0h1m2 0h3m2 0h4m1 0h1m2 0h1m9 0h1m2 0h8M4 35.5h1m1 0h4m3 0h2m3 0h3m2 0h4m1 0h1m1 0h1m1 0h1m4 0h5M4 36.5h1m1 0h2m2 0h1m2 0h2m4 0h3m1 0h2m1 0h1m1 0h3m2 0h1m2 0h7m1 0h1M12 37.5h3m2 0h1m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h3m3 0h1m2 0h2M4 38.5h7m2 0h7m1 0h1m2 0h2m3 0h4m1 0h3m1 0h1m1 0h1m1 0h1M4 39.5h1m5 0h1m1 0h1m1 0h1m1 0h1m3 0h3m2 0h2m1 0h2m5 0h2m3 0h2m1 0h2M4 40.5h1m1 0h3m1 0h1m1 0h4m1 0h4m4 0h1m1 0h1m2 0h2m2 0h1m1 0h5m1 0h2M4 41.5h1m1 0h3m1 0h1m1 0h2m2 0h2m4 0h6m4 0h1m3 0h2m1 0h1m2 0h1M4 42.5h1m1 0h3m1 0h1m1 0h1m4 0h2m1 0h1m3 0h1m3 0h2m1 0h3m1 0h1m1 0h5M4 43.5h1m5 0h1m2 0h1m1 0h2m1 0h4m2 0h4m2 0h1m4 0h2m1 0h1m1 0h2m1 0h1M4 44.5h7m1 0h3m1 0h3m1 0h2m1 0h1m2 0h1m1 0h4m1 0h3m2 0h5"/>
+      </g>
+
+      <text x="13.5" y="26" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="1.5" font-weight="500" fill="#94A3B8" text-anchor="middle">Devis &amp; RDV en ligne</text>
+    </g>
+  </g>
+</svg>
