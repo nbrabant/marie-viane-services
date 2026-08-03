@@ -28,7 +28,7 @@ up front so they don't stall a priority tier silently.
 - [x] Real SIRET number (`src/routes/index.tsx` mentions légales section — currently "à compléter")
 - [x] Real business address (same section — currently "à compléter")
 - [x] Real phone number and email (currently placeholders: `0750653753`, `r-rems@hotmail.fr`)
-- [ ] Typeform form ID (`TYPEFORM_URL` in `src/routes/index.tsx` is `.../to/your-form-id`)
+- [x] Typeform form ID (`TYPEFORM_URL` in `src/routes/index.tsx` is `.../to/your-form-id`)
 - [ ] Google Analytics property (GA4 Measurement ID)
 - [x] Final production domain name: `https://www.mv-services.pro` (set in `src/lib/site.ts`, used by
       `robots.txt`, `sitemap.xml`, canonical/OG URLs, JSON-LD)
@@ -57,8 +57,8 @@ up front so they don't stall a priority tier silently.
 ## Priority 1
 
 ### 1.a Typeform link integration
-- [ ] Replace placeholder `TYPEFORM_URL` in `src/routes/index.tsx` with the real form URL
-- [ ] Decide: keep as `target="_blank"` link (current behavior, 4 CTAs already wired) vs. embed
+- [x] Replace placeholder `TYPEFORM_URL` in `src/routes/index.tsx` with the real form URL
+- [x] Decide: keep as `target="_blank"` link (current behavior, 4 CTAs already wired) vs. embed
       inline (Typeform embed SDK) — embedding keeps users on-site (better for analytics/SEO
       dwell time) but adds a third-party script; current link-out is simpler and already coded
 - [ ] Wire GA event tracking on click (see Priority 2 — Google Analytics)

@@ -41,6 +41,11 @@
       <line x1="0.4" y1="1.5" x2="2.6" y2="1.5" stroke="#2b795c" stroke-width="0.2"/>
       <text x="5" y="2.3" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="3.2" font-weight="700" fill="#2b795c">r-rems@hotmail.fr</text>
     </g>
+
+    <!-- Icône décorative (aide & accompagnement) -->
+    <g transform="translate(55, 20) scale(1.5)" stroke="#2b795c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.15">
+      <path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762"/>
+    </g>
   </g>
 
   <!-- Bande de rappel couleur en bas, étendue jusqu'au bord de fond perdu -->
