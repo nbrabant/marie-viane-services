@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Carte de visite Verso - Format fini 85x55mm, fichier fond perdu 88x58mm (1.5mm de fond perdu par côté) - MV Services V2 -->
 <svg xmlns="http://www.w3.org/2000/svg" width="88mm" height="58mm" viewBox="0 0 88 58">
+  <style>
+    text {
+      font-family: Nunito Sans, ui-sans-serif, system-ui, sans-serif;
+    }
+    .services {
+    fill: pink;
+      font-size: 2.9;
+      font-weight: 400;
+      fill: #1E293B;
+    }
+  </style>
+
   <!-- Fond sombre élégant (couvre tout le fond perdu) -->
   <rect x="0" y="0" width="88" height="58" fill="#f7f8ef"/>
 
@@ -10,43 +22,39 @@
   <!-- Contenu, recentré dans la zone de coupe 85x55mm -->
   <g transform="translate(1.5, 1.5)">
     <!-- Colonne Gauche : Mes Services -->
-    <text x="5" y="11" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="3.2" font-weight="800" fill="#2b795c" letter-spacing="0.5">MES SERVICES</text>
+    <text x="5" y="11" font-size="3.2" font-weight="800" fill="#2b795c" letter-spacing="0.2">MES SERVICES</text>
     <line x1="5" y1="13.5" x2="44" y2="13.5" stroke="#1E293B" stroke-width="0.5" opacity="0.6"/>
 
     <!-- Service 1 -->
     <g transform="translate(5, 17)">
-      <circle cx="1.2" cy="1.2" r="1.2" fill="#2b795c"/>
-      <text x="4.5" y="2" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="2.9" font-weight="600" fill="#1E293B">Aide &amp; accompagnement</text>
+      <circle cx="1.2" cy="1.2" r="1" fill="#2b795c"/>
+      <text x="3.5" y="2" font-size="2.5" font-weight="600" fill="#1E293B">Aide à domicile</text>
     </g>
 
     <!-- Service 2 -->
     <g transform="translate(5, 23)">
-      <circle cx="1.2" cy="1.2" r="1.2" fill="#2b795c"/>
-      <text x="4.5" y="2" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="2.9" font-weight="600" fill="#1E293B">Ménage &amp; repassage</text>
+      <circle cx="1.2" cy="1.2" r="1" fill="#2b795c"/>
+      <text x="3.5" y="2" font-size="2.5" font-weight="600" fill="#1E293B">Entretien du logement</text>
     </g>
 
     <!-- Service 3 -->
     <g transform="translate(5, 29)">
-      <circle cx="1.2" cy="1.2" r="1.2" fill="#2b795c"/>
-      <text x="4.5" y="2" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="2.9" font-weight="600" fill="#1E293B">Nettoyage professionnel</text>
+      <circle cx="1.2" cy="1.2" r="1" fill="#2b795c"/>
+      <text x="3.5" y="2" font-size="2.5" font-weight="600" fill="#1E293B">Nettoyage professionnel</text>
     </g>
 
     <!-- Service 4 -->
     <g transform="translate(5, 35)">
-      <circle cx="1.2" cy="1.2" r="1.2" fill="#2b795c"/>
-      <text x="4.5" y="2" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="2.9" font-weight="600" fill="#1E293B">Prestations sur-mesure</text>
+      <circle cx="1.2" cy="1.2" r="1" fill="#2b795c"/>
+      <text x="3.5" y="2" font-size="2.5" font-weight="600" fill="#1E293B">Prestations sur-mesure</text>
     </g>
 
     <!-- Encadré Crédit d'Impôt -->
-    <rect x="5" y="41" width="40" height="9.5" rx="1.5" fill="#2A9D8F" fill-opacity="0.15" stroke="#2A9D8F" stroke-width="0.4"/>
-    <text x="24.5" y="44.8" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="2.5" font-weight="800" fill="#2A9D8F" text-anchor="middle">50% DE CRÉDIT D'IMPÔT</text>
-    <text x="24.5" y="48.3" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="1.9" font-weight="600" fill="#1E293B" text-anchor="middle">Avance immédiate disponible</text>
+    <rect x="5" y="41" width="40" height="9.5" rx="1.5" fill="#2A9D8F" fill-opacity="0.15" stroke="#2b795c" stroke-width="0.4"/>
+    <text x="24.5" y="46.5" font-size="2.5" font-weight="800" fill="#2b795c" text-anchor="middle">50% DE CRÉDIT D'IMPÔT</text>
 
     <!-- Ligne de séparation centrale -->
     <line x1="48" y1="10" x2="48" y2="48" stroke="#334155" stroke-width="0.4"/>
-
-    <!-- Colonne Droite : QR Code & Appel à l'action -->
-    <!--  <text x="66.5" y="11" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="3.5" font-weight="700" fill="#FFFFFF" text-anchor="middle">Scannez-moi</text>-->
 
     <!-- Icône décorative (aide & accompagnement) -->
     <g transform="translate(70, -5) scale(1)" stroke="#2b795c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.15">
@@ -54,12 +62,12 @@
     </g>
 
     <!-- QR Code embarqué -->
-    <g transform="translate(53.5, 13.5) scale(0.530612)">
+    <g transform="translate(52.5, 13.5) scale(0.530612)">
       <path fill="#ffffff" d="M0 0h49v49H0z"/>
       <path stroke="#000000" d="M4 4.5h7m2 0h1m2 0h1m1 0h1m2 0h10m1 0h1m1 0h3m1 0h7M4 5.5h1m5 0h1m8 0h3m3 0h1m2 0h5m1 0h1m3 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m1 0h3m2 0h4m1 0h4m1 0h1m1 0h2m3 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h2m1 0h3m2 0h1m4 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h6m1 0h1m1 0h7m4 0h1m2 0h2m1 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m1 0h1m2 0h3m1 0h1m4 0h1m1 0h6m2 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h3m2 0h3m2 0h1m1 0h2m5 0h2m2 0h2M4 12.5h1m1 0h5m2 0h2m2 0h5m4 0h1m2 0h1m2 0h2m1 0h2m1 0h5M4 13.5h3m5 0h1m1 0h1m2 0h2m1 0h2m1 0h1m3 0h1m4 0h1m2 0h2m1 0h3m1 0h1m1 0h1M6 14.5h1m2 0h2m1 0h2m1 0h1m2 0h3m1 0h1m1 0h3m1 0h1m2 0h2m3 0h1M7 15.5h3m4 0h2m1 0h1m3 0h1m1 0h4m1 0h3m2 0h2m2 0h1m1 0h1M5 16.5h1m1 0h2m1 0h1m2 0h1m7 0h1m2 0h3m1 0h3m1 0h2m1 0h1m1 0h1m3 0h4M5 17.5h1m1 0h2m2 0h1m4 0h2m1 0h1m6 0h1m3 0h2m1 0h1m2 0h2m1 0h4m1 0h1M4 18.5h1m2 0h1m2 0h2m4 0h1m3 0h1m3 0h5m2 0h2m2 0h1m1 0h1m2 0h3M4 19.5h1m1 0h1m4 0h3m4 0h2m5 0h3m3 0h1m3 0h2m1 0h3M6 20.5h5m1 0h1m3 0h4m1 0h2m1 0h1m1 0h6m3 0h3m1 0h1m1 0h2m1 0h1M4 21.5h1m2 0h2m3 0h5m1 0h2m2 0h3m2 0h1m4 0h2m1 0h2m1 0h3m2 0h2M4 22.5h3m1 0h6m2 0h2m1 0h2m1 0h1m3 0h1m4 0h3m2 0h1m1 0h1m1 0h1m2 0h1M4 23.5h1m1 0h1m1 0h1m8 0h3m3 0h1m3 0h1m2 0h2m1 0h2m1 0h1m3 0h2m2 0h1M7 24.5h1m2 0h1m3 0h1m1 0h3m3 0h1m2 0h2m4 0h2m8 0h2m1 0h1M5 25.5h2m6 0h1m1 0h3m1 0h1m3 0h2m2 0h1m1 0h2m3 0h3m2 0h2m2 0h2M4 26.5h3m1 0h7m4 0h1m2 0h1m1 0h2m4 0h4m2 0h1m3 0h3M4 27.5h5m2 0h1m2 0h2m6 0h1m1 0h3m3 0h3m2 0h1m1 0h1m1 0h3M4 28.5h2m4 0h1m1 0h4m3 0h1m1 0h1m2 0h1m1 0h1m2 0h3m1 0h1m3 0h1m4 0h1M4 29.5h1m1 0h2m1 0h1m2 0h1m2 0h4m1 0h1m2 0h2m2 0h1m2 0h1m1 0h1m2 0h1m1 0h5m1 0h2M4 30.5h7m2 0h2m1 0h3m1 0h1m3 0h1m1 0h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h3M4 31.5h1m1 0h2m9 0h1m2 0h1m3 0h3m5 0h1m1 0h5m2 0h1m1 0h2M6 32.5h5m2 0h3m1 0h1m2 0h2m4 0h1m2 0h1m3 0h1m1 0h2m1 0h2m1 0h2M4 33.5h3m1 0h1m3 0h1m1 0h1m1 0h1m1 0h5m1 0h2m2 0h1m2 0h4m2 0h1m1 0h4m1 0h1M4 34.5h1m2 0h1m2 0h3m2 0h4m1 0h1m2 0h1m9 0h1m2 0h8M4 35.5h1m1 0h4m3 0h2m3 0h3m2 0h4m1 0h1m1 0h1m1 0h1m4 0h5M4 36.5h1m1 0h2m2 0h1m2 0h2m4 0h3m1 0h2m1 0h1m1 0h3m2 0h1m2 0h7m1 0h1M12 37.5h3m2 0h1m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h3m3 0h1m2 0h2M4 38.5h7m2 0h7m1 0h1m2 0h2m3 0h4m1 0h3m1 0h1m1 0h1m1 0h1M4 39.5h1m5 0h1m1 0h1m1 0h1m1 0h1m3 0h3m2 0h2m1 0h2m5 0h2m3 0h2m1 0h2M4 40.5h1m1 0h3m1 0h1m1 0h4m1 0h4m4 0h1m1 0h1m2 0h2m2 0h1m1 0h5m1 0h2M4 41.5h1m1 0h3m1 0h1m1 0h2m2 0h2m4 0h6m4 0h1m3 0h2m1 0h1m2 0h1M4 42.5h1m1 0h3m1 0h1m1 0h1m4 0h2m1 0h1m3 0h1m3 0h2m1 0h3m1 0h1m1 0h5M4 43.5h1m5 0h1m2 0h1m1 0h2m1 0h4m2 0h4m2 0h1m4 0h2m1 0h1m1 0h2m1 0h1M4 44.5h7m1 0h3m1 0h3m1 0h2m1 0h1m2 0h1m1 0h4m1 0h3m2 0h5"/>
     </g>
 
-    <text x="66.5" y="44.5" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="2.8" font-weight="700" fill="#2A9D8F" text-anchor="middle">www.mv-services.pro</text>
-    <text x="66.5" y="48" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="2" font-weight="500" fill="#94A3B8" text-anchor="middle">Devis &amp; Prise de RDV en ligne</text>
+    <text x="66.5" y="44.5" font-size="2.8" font-weight="700" fill="#2b795c" text-anchor="middle">www.mv-services.pro</text>
+    <text x="66.5" y="48" font-size="2" font-weight="500" fill="#94A3B8" text-anchor="middle">Devis &amp; Prise de RDV en ligne</text>
   </g>
 </svg>

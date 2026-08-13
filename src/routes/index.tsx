@@ -37,14 +37,14 @@ const TYPEFORM_URL = "https://form.jotform.com/262146727751057";
 
 const services = [
   {
-    icon: Building2,
-    image: nettoyageImg,
-    title: "Nettoyage de locaux professionnels",
+    icon: HeartHandshake,
+    image: accompagnementImg,
+    title: "Accompagnement",
     description:
-      "Entretien régulier ou ponctuel de bureaux, commerces et espaces professionnels pour un cadre de travail sain.",
+      "Accompagnement aux rendez-vous, aux sorties et dans les démarches du quotidien, en toute bienveillance.",
     taxCredit: {
-      eligible: false,
-      note: "Non éligible : prestation réalisée dans des locaux professionnels, en dehors du champ des services à la personne réservé au domicile des particuliers.",
+      eligible: "conditional" as const,
+      note: "Éligible lorsque la prestation bénéficie à une personne âgée, handicapée ou dépendante, dans le cadre d'une offre globale de services à la personne incluant une prestation à domicile.",
     },
   },
   {
@@ -81,17 +81,6 @@ const services = [
     },
   },
   {
-    icon: Hammer,
-    image: finChantierImg,
-    title: "Nettoyage de fin de chantier",
-    description:
-      "Remise en état après travaux dans le cadre d'un état des lieux, pour un logement prêt à être habité.",
-    taxCredit: {
-      eligible: "conditional" as const,
-      note: "Éligible uniquement lorsque la prestation est réalisée à votre domicile (résidence principale ou secondaire) ; non éligible pour un chantier professionnel.",
-    },
-  },
-  {
     icon: ShoppingBag,
     image: coursesImg,
     title: "Courses & approvisionnement",
@@ -103,14 +92,25 @@ const services = [
     },
   },
   {
-    icon: HeartHandshake,
-    image: accompagnementImg,
-    title: "Accompagnement",
+    icon: Building2,
+    image: nettoyageImg,
+    title: "Nettoyage de locaux professionnels",
     description:
-      "Accompagnement aux rendez-vous, aux sorties et dans les démarches du quotidien, en toute bienveillance.",
+      "Entretien régulier ou ponctuel de bureaux, commerces et espaces professionnels pour un cadre de travail sain.",
+    taxCredit: {
+      eligible: false,
+      note: "Non éligible : prestation réalisée dans des locaux professionnels, en dehors du champ des services à la personne réservé au domicile des particuliers.",
+    },
+  },
+  {
+    icon: Hammer,
+    image: finChantierImg,
+    title: "Nettoyage de fin de chantier",
+    description:
+      "Remise en état après travaux dans le cadre d'un état des lieux, pour un logement prêt à être habité.",
     taxCredit: {
       eligible: "conditional" as const,
-      note: "Éligible lorsque la prestation bénéficie à une personne âgée, handicapée ou dépendante, dans le cadre d'une offre globale de services à la personne incluant une prestation à domicile.",
+      note: "Éligible uniquement lorsque la prestation est réalisée à votre domicile (résidence principale ou secondaire) ; non éligible pour un chantier professionnel.",
     },
   },
 ];

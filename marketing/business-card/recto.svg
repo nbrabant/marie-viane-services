@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Carte de visite Recto - Format fini 85x55mm, fichier fond perdu 88x58mm (1.5mm de fond perdu par côté) -->
 <svg xmlns="http://www.w3.org/2000/svg" width="88mm" height="58mm" viewBox="0 0 88 58">
+  <style>
+    text {
+      font-family: Nunito Sans, ui-sans-serif, system-ui, sans-serif;
+    }
+  </style>
+
   <!-- Fond (couvre tout le fond perdu) -->
   <rect x="0" y="0" width="88" height="58" fill="#FFFFFF"/>
 
@@ -15,23 +21,23 @@
         <path d="M 38 34 C 44 34 46 42 46 48 C 40 48 38 42 38 34 Z" fill="#588157"/>
         <path d="M 38 34 C 32 34 30 42 30 48 C 36 48 38 42 38 34 Z" fill="#2A9D8F"/>
       </g>
-      <text x="110" y="60" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="28" font-weight="800" fill="#1E293B" letter-spacing="1">MV SERVICES</text>
-      <text x="110" y="80" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="12" font-weight="600" fill="#588157" letter-spacing="2">AIDE À DOMICILE &amp; NETTOYAGE</text>
+      <text x="110" y="60" font-size="28" font-weight="800" fill="#1E293B" letter-spacing="1">MV SERVICES</text>
+      <text x="110" y="80" font-size="12" font-weight="600" fill="#588157" letter-spacing="2">AIDE À DOMICILE &amp; NETTOYAGE</text>
     </g>
 
     <!-- Ligne de séparation fine -->
     <line x1="3" y1="18" x2="78" y2="18" stroke="#E2E8F0" stroke-width="0.4"/>
 
     <!-- Identité -->
-    <text x="5" y="31" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="6" font-weight="800" fill="#1E293B">Marie Viane</text>
-    <text x="5" y="35" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="3" font-weight="600" fill="#2b795c">Gérante &amp; Service à la personne</text>
+    <text x="5" y="31" font-size="6" font-weight="800" fill="#1E293B">Marie Viane</text>
+    <text x="5" y="35" font-size="3" font-weight="500" fill="#2b795c">Gérante &amp; Service à la personne</text>
 
     <!-- Bloc Contact (Téléphone + Site Web) -->
     <!-- Téléphone -->
     <g transform="translate(5, 40.5)">
       <circle cx="1.5" cy="1.5" r="1.5" fill="#F0F4F8"/>
       <path d="M1 0.8 C1 0.6 1.2 0.5 1.4 0.5 H1.8 C1.9 0.5 2 0.6 2 0.7 L2.2 1.3 C2.3 1.4 2.2 1.5 2.1 1.6 L1.8 1.9 C2.1 2.5 2.5 2.9 3.1 3.2 L3.4 2.9 C3.5 2.8 3.6 2.7 3.7 2.8 L4.3 3 C4.4 3 4.5 3.1 4.5 3.2 V3.6 C4.5 3.8 4.3 4 4.1 4 C2.3 4 1 2.7 1 0.9 Z" fill="#2b795c" transform="scale(0.7)"/>
-      <text x="5" y="2.3" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="3.2" font-weight="700" fill="#1E293B">07 50 65 37 53</text>
+      <text x="5" y="2.3" font-size="3.2" font-weight="700" fill="#1E293B">07 50 65 37 53</text>
     </g>
 
     <!-- Site Web -->
@@ -39,7 +45,7 @@
       <circle cx="1.5" cy="1.5" r="1.5" fill="#F0F4F8"/>
       <circle cx="1.5" cy="1.5" r="1.1" fill="none" stroke="#2b795c" stroke-width="0.3"/>
       <line x1="0.4" y1="1.5" x2="2.6" y2="1.5" stroke="#2b795c" stroke-width="0.2"/>
-      <text x="5" y="2.3" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-size="3.2" font-weight="700" fill="#2b795c">r-rems@hotmail.fr</text>
+      <text x="5" y="2.3" font-size="3.2" font-weight="700" fill="#2b795c">r-rems@hotmail.fr</text>
     </g>
 
     <!-- Icône décorative (aide & accompagnement) -->
