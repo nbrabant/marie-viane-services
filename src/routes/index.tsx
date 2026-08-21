@@ -47,17 +47,17 @@ const services = [
       note: "Éligible lorsque la prestation bénéficie à une personne âgée, handicapée ou dépendante, dans le cadre d'une offre globale de services à la personne incluant une prestation à domicile.",
     },
   },
-  {
-    icon: Moon,
-    image: gardeDeNuitImg,
-    title: "Garde de nuit à domicile",
-    description:
-      "Une présence rassurante et attentive durant la nuit pour veiller au confort et à la sécurité de vos proches.",
-    taxCredit: {
-      eligible: true,
-      note: "Éligible, dans le cadre de mon autorisation du Conseil Départemental pour l'accompagnement des personnes âgées, handicapées ou dépendantes. Possibilité d'aide au coucher e au lever",
-    },
-  },
+  // {
+  //   icon: Moon,
+  //   image: gardeDeNuitImg,
+  //   title: "Garde de nuit à domicile",
+  //   description:
+  //     "Une présence rassurante et attentive durant la nuit pour veiller au confort et à la sécurité de vos proches.",
+  //   taxCredit: {
+  //     eligible: true,
+  //     note: "Éligible, dans le cadre de mon autorisation du Conseil Départemental pour l'accompagnement des personnes âgées, handicapées ou dépendantes. Possibilité d'aide au coucher e au lever",
+  //   },
+  // },
   {
     icon: Bath,
     image: aideToiletteImg,
@@ -102,17 +102,17 @@ const services = [
       note: "Non éligible : prestation réalisée dans des locaux professionnels, en dehors du champ des services à la personne réservé au domicile des particuliers.",
     },
   },
-  {
-    icon: Hammer,
-    image: finChantierImg,
-    title: "Nettoyage de fin de chantier",
-    description:
-      "Remise en état après travaux dans le cadre d'un état des lieux, pour un logement prêt à être habité.",
-    taxCredit: {
-      eligible: "conditional" as const,
-      note: "Éligible uniquement lorsque la prestation est réalisée à votre domicile (résidence principale ou secondaire) ; non éligible pour un chantier professionnel.",
-    },
-  },
+  // {
+  //   icon: Hammer,
+  //   image: finChantierImg,
+  //   title: "Nettoyage de fin de chantier",
+  //   description:
+  //     "Remise en état après travaux dans le cadre d'un état des lieux, pour un logement prêt à être habité.",
+  //   taxCredit: {
+  //     eligible: "conditional" as const,
+  //     note: "Éligible uniquement lorsque la prestation est réalisée à votre domicile (résidence principale ou secondaire) ; non éligible pour un chantier professionnel.",
+  //   },
+  // },
 ];
 
 const taxCreditGeneralConditions = [
